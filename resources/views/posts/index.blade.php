@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('title','Posts')
 @section('content')
+    @if(Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            <strong> Success:</strong> {!! Session::get('success') !!}
+        </div>
+    @endif
     <div class="row">
         <div class="col-lg-10">
             <h1> All the posts</h1>

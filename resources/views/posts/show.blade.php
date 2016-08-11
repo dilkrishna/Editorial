@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('title','Blog Show')
 @section('content')
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            <strong> Success:</strong> {!! Session::get('success') !!}
-        </div>
-    @endif
-    <div class="row">
+     <div class="row">
         <div class="col-lg-6">
             <h1>Title : {{ $post->title }}</h1>
          </div>

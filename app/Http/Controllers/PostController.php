@@ -34,7 +34,7 @@ class PostController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->route('post.create',['errors'=>$validator->errors()]);
+//            return redirect()->route('post.create',['errors'=>$validator->errors()]);
             return view('posts.create', ['errors'=>$validator->errors()]);
         }
         else{
@@ -75,11 +75,11 @@ class PostController extends Controller
                 'title' => 'required',
                 'body' => 'required',
             ]);
-            $data = [ $id ,['errors'=> $validator->errors()]];
+//            $data = [ $id ,['errors'=> $validator->errors()]];
 
             if($validator->fails()){
-                return redirect()->route('post.edit',compact('data'));
-    //            return view('posts.edit', compact('data'));
+                return redirect()->route(['post.edit','errors'=>$validator->errors()]);
+//                return view('posts.edit', [$id,'errors'=>$validator->errors()]);
             }
             // insert into database
             $post = Post::find($id);

@@ -19,11 +19,10 @@
         <div class="form-group">
             <label for="title" class="col-lg-2 control-label">Title</label>
             <div>
-                {{ Form::text('title')}}
+                <input id="title" type="text"  name="title" value="{{ Input::get('title') }}">
             </div>
         </div>
         <br>
-
         <div class="form-group">
             <label for="title" class="col-lg-2 control-label">body</label>
             <div>
