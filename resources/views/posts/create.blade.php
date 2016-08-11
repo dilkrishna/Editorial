@@ -19,7 +19,6 @@
         <div class="form-group">
             <label for="title" class="col-lg-2 control-label">Title</label>
             <div>
-                {{--{{ Form::text($title, $value = null, $attributes = array('value'=>'old('title))')) }}--}}
                 {{ Form::text('title')}}
             </div>
         </div>
