@@ -11,7 +11,7 @@ class SettingController extends Controller
     //
     public function getIndex()
     {
-        return 'setting';
+        return view('setting.index');
     }
 
     public function getProfile()

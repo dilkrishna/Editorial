@@ -30,8 +30,9 @@ class PostController extends Controller
 //            return 'store';
         // validation
         $validator = Validator::make($request->all(),[
-            'title' => 'required',
+            'title' => 'required|unique:posts',
             'body' => 'required',
+            'file' => 'required|mimes:jpeg,bmp,png,jpg|',
         ]);
 
         if($validator->fails()){
@@ -43,6 +44,7 @@ class PostController extends Controller
             $post = new Post;
             $post->title  =  $request->title;
             $post->body   =  $request->body;
+            $post->file   =  $request->file;
 
             $post->save();
 

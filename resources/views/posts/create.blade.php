@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','Create Blog')
 @section('content')
+    <a href="{{ route('post.index') }}" class=" btn btn-default pull-right btn-sm">Back</a>
         <div>
             @if (count($errors) > 0)
                 <div class="text-danger" role="alert" >
@@ -13,13 +14,18 @@
                 </div>
             @endif
         </div>
-        <a href="{{ route('post.index') }}" class=" btn btn-default pull-right btn-sm">Back</a>
         <h1>Create Your Blog</h1>
         {{ Form::open(array('route'=> 'post.store', 'method'=> 'post', 'class'=> 'form-horizontal')) }}
         <div class="form-group">
             <label for="title" class="col-lg-2 control-label">Title</label>
             <div>
                 <input id="title" type="text"  name="title" value="{{ Input::get('title') }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="file" class="col-lg-2 control-label">Uplaod Photo</label>
+            <div>
+                {{form::file('file',array('class'=>'text-danger'))}}
             </div>
         </div>
         <br>
