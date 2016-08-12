@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 use App\Post;
 use Session;
 
@@ -98,9 +99,10 @@ class PostController extends Controller
     public function destroy($id)
         {
 //   return 'destroy';
-            $post =Post::findOrfail($id);
-            $post->delete();
-//
+        $post =Post::findOrfail($id);
+        $post->delete();
+
+        Session::flash('success', 'The blog is deleted!');
             return redirect()->route('post.index');
         }
 }

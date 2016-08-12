@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
+Route::get('/blog/{id}',[
+    'as'=>'blog.single',
+    'uses'=> 'WelcomeController@showblog'
+        ]);
 
 Route::auth();
 
@@ -25,3 +27,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::controller('setting','SettingController');
 
 });
+//Route::get('/blog/{id}',[
+//    'as'=>'blog.single',
+//    'uses'=> 'WelcomeController@showblog'
+//])->where('id','[\w\d\-\_]+');
