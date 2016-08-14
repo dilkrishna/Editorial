@@ -25,6 +25,11 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::resource('post','PostController');
     Route::controller('setting','SettingController');
+//    Route::post('setting/upload',[
+//        'as' => 'setting.upload',
+//        'uses' => 'SettingController@uplaod'
+//    ]);
+
 
 });
 //Route::get('/blog/{id}',[

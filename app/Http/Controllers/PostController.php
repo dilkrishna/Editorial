@@ -32,7 +32,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|unique:posts',
             'body' => 'required',
-            'file' => 'required|mimes:jpeg,bmp,png,jpg|',
+            'file' => 'required|mimes:jpg,jpeg,png|max:100',
         ]);
 
         if($validator->fails()){
@@ -40,17 +40,25 @@ class PostController extends Controller
             return view('posts.create', ['errors'=>$validator->errors()]);
         }
         else{
-//             insert into database
+//
+//             $linsert into database
+            $logo= $request->file('file');
+            $upload = 'uploads';
+            $filename =$request->file('file')->getClientOriginalExtension();
+            $success = $logo->move($upload,$filename);
+
+            if($success)
             $post = new Post;
             $post->title  =  $request->title;
             $post->body   =  $request->body;
-            $post->file   =  $request->file;
+            $post->file   =  $filename;
 
             $post->save();
 
             Session::flash('success', 'The blog is successfully save !');
 
             return redirect()->route('post.show',[$post->id]);
+
         }
 
 
