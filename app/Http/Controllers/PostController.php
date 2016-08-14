@@ -74,15 +74,15 @@ class PostController extends Controller
         {
 //         return 'update';
          // validation
+        $post = Post::findOrFail($id);
             $validator = Validator::make($request->all(),[
                 'title' => 'required',
                 'body' => 'required',
             ]);
-//            $data = [ $id ,['errors'=> $validator->errors()]];
 
             if($validator->fails()){
-                return redirect()->route(['post.edit','errors'=>$validator->errors()]);
-//                return view('posts.edit', [$id,'errors'=>$validator->errors()]);
+
+                return view('posts.edit', ['post'=>$post, $id,'errors'=>$validator->errors()]);
             }
             // insert into database
             $post = Post::find($id);
