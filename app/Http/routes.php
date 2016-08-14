@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/blog/{id}',[
+Route::get('/blog/{title}',[
     'as'=>'blog.single',
     'uses'=> 'WelcomeController@showblog'
         ]);

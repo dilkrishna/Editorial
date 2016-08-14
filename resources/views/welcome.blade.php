@@ -14,7 +14,7 @@
                         <td><p>{{ substr($post->body, 0, 500)}}{{ strlen($post->body)>500 ? "............" :"" }}</p></td>
                         <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
                         <td>
-                            <a href="{{ url('/blog/'.$post->id) }}" class="btn btn-inverse">Readmore</a>
+                            <a href="{{ url('/blog/'.$post->title) }}" class="btn btn-inverse">Readmore</a>
                         </td>
                     </tr>
                 @endforeach

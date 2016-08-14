@@ -17,9 +17,9 @@ class WelcomeController extends Controller
         return view('welcome',['posts'=>$posts]);
     }
 
-    public function showblog($id)
+    public function showblog($title)
     {
-        $post = Post::where('id','=',$id)->first();
+        $post = Post::where('title','=',$title)->first();
         return view('blog',['post'=>$post]);
     }
 }
