@@ -7,8 +7,11 @@
         </div>
     @endif
      <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <h1>Title : {{ $post->title }}</h1>
+         </div>
+         <div class="col-lg-2">
+             <img src="{!! url('/uploads/'.$post->file) !!}" width="200" height="200">
          </div>
         <div class="col-lg-4">
             <div>

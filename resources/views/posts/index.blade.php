@@ -24,6 +24,7 @@
                     <th>Body</th>
                     <th>Created At</th>
                     <th>Action</th>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,11 @@
                         <td>
                             <a href="{{ route('post.show',[$post->id]) }}" class="btn btn-inverse">View</a>
                             <a href="{{ route('post.edit',[$post->id]) }}" class="btn btn-inverse">Edit</a>
+                        </td>
+                        <td>
+                            {!! Form::model($post, ['method' => 'DELETE','route' => ['post.update', $post->id]]) !!}
+                            {{ Form::submit('Delete', array('class'=>'btn btn-danger btn-sm'))}}
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach

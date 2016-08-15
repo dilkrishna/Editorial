@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use App\Post;
 use Session;
-
 class PostController extends Controller
 {
     public function index()
@@ -32,7 +31,7 @@ class PostController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|unique:posts',
             'body' => 'required',
-            'file' => 'required|mimes:jpg,jpeg,png|max:100',
+            'file' => 'required|mimes:jpg,jpeg,png|max:1000',
         ]);
 
         if($validator->fails()){
@@ -43,21 +42,26 @@ class PostController extends Controller
 //
 //             $linsert into database
             $logo= $request->file('file');
-            $upload = 'uploads';
-            $filename =$request->file('file')->getClientOriginalExtension();
-            $success = $logo->move($upload,$filename);
+            $name=md5(rand().time());
+
+
+//            $upload = base_path('/public/uploads');
+            $ext =$logo->getClientOriginalExtension();
+
+            $fileName=$name.'.'.$ext;
+            $success = $logo->move(base_path('/public/uploads'),$fileName);
 
             if($success)
             $post = new Post;
             $post->title  =  $request->title;
             $post->body   =  $request->body;
-            $post->file   =  $filename;
+            $post->file   =  $fileName;
 
             $post->save();
 
             Session::flash('success', 'The blog is successfully save !');
 
-            return redirect()->route('post.show',[$post->id]);
+            return redirect()->route('post.show',['post'=>$post]);
 
         }
 

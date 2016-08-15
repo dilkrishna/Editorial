@@ -9,7 +9,7 @@
                 <hr>
                 <tbody>
                 @foreach($posts as $post)
-                    <tr class="trhover" onclick="location.href='{{ route('blog.single',[$post->id]) }}'">
+                    <tr class="trhover" onclick="location.href='{{ route('blog.single',[$post->title]) }}'">
                         <td><h4>{{ $post->title }}</h4></td>
                         <td><p>{{ substr($post->body, 0, 500)}}{{ strlen($post->body)>500 ? "............" :"" }}</p></td>
                         <td>{{ date( 'M j Y, A:h',strtotime($post->created_at)) }}</td>
